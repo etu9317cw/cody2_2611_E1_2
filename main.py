@@ -40,6 +40,18 @@ def add_quiz(state):
     print("✅ 퀴즈가 추가되었습니다!")
 
 
+def list_quizzes(quizzes):
+    """등록된 퀴즈의 번호와 문제를 보여 준다."""
+    if not quizzes:
+        print("⚠️ 등록된 퀴즈가 없습니다.")
+        return
+    print(f"📋 등록된 퀴즈 목록 (총 {len(quizzes)}개)")
+    print("-" * WIDTH)
+    for number, quiz in enumerate(quizzes, start=1):
+        print(f"[{number}] {quiz.question}")
+    print("-" * WIDTH)
+
+
 def show_menu():
     print("=" * WIDTH)
     print("🎯 나만의 퀴즈 게임 🎯".center(WIDTH))
@@ -86,6 +98,8 @@ def run_menu():
             play_quiz(state["quizzes"])
         elif choice == 2:
             add_quiz(state)
+        elif choice == 3:
+            list_quizzes(state["quizzes"])
         else:
             print(f"[{MENU_ITEMS[choice - 1]}] 기능은 아직 준비 중입니다.")
 
