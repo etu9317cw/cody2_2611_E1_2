@@ -1,0 +1,87 @@
+{
+  "quizzes": [
+    {
+      "question": "Git에서 지금까지 바꾼 내용을 저장소 기록으로 남기는 명령은?",
+      "choices": [
+        "git add",
+        "git commit",
+        "git push",
+        "git clone"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "인터넷의 저장소를 내 컴퓨터에 통째로 복사해 오는 명령은?",
+      "choices": [
+        "git init",
+        "git pull",
+        "git clone",
+        "git branch"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "다른 브랜치에서 한 작업을 지금 브랜치로 합치는 명령은?",
+      "choices": [
+        "git merge",
+        "git status",
+        "git log",
+        "git diff"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "터미널에서 지금 있는 폴더의 경로를 보여 주는 명령은?",
+      "choices": [
+        "ls",
+        "cd",
+        "mkdir",
+        "pwd"
+      ],
+      "answer": 4
+    },
+    {
+      "question": "Python에서 이름표(키)로 값을 찾는 자료형은?",
+      "choices": [
+        "list",
+        "dict",
+        "bool",
+        "int"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Docker 이미지를 실행하면 만들어지는 '실행 중인 상자'는?",
+      "choices": [
+        "이미지",
+        "레지스트리",
+        "컨테이너",
+        "볼륨"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "docker run -p 8080:80 에서 8080은 무엇인가?",
+      "choices": [
+        "내 컴퓨터(호스트)의 포트 번호",
+        "컨테이너 안 프로그램의 포트 번호",
+        "이미지 버전",
+        "컨테이너 개수"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Python 클래스의 __init__ 메서드는 언제 실행되는가?",
+      "choices": [
+        "클래스를 지울 때",
+        "객체가 만들어질 때",
+        "파일을 닫을 때",
+        "프로그램이 끝날 때"
+      ],
+      "answer": 2
+    }
+  ],
+  "best_score": null,
+  "best_correct": null,
+  "best_total": null
+}
