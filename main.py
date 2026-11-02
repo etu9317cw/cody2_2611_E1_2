@@ -2,6 +2,7 @@
 import sys
 
 from inputs import read_int
+from quiz import CHOICE_COUNT, default_quizzes
 
 WIDTH = 40
 MENU_ITEMS = ["퀴즈 풀기", "퀴즈 추가", "퀴즈 목록", "점수 확인", "종료"]
@@ -25,14 +26,43 @@ def show_menu():
     print("=" * WIDTH)
 
 
+def play_quiz(quizzes):
+    """모든 퀴즈를 순서대로 출제하고 (맞힌 수, 전체 수)를 돌려준다. 퀴즈가 없으면 None."""
+    if not quizzes:
+        print("⚠️ 등록된 퀴즈가 없습니다. 먼저 퀴즈를 추가하세요.")
+        return None
+    total = len(quizzes)
+    print(f"📝 퀴즈를 시작합니다! (총 {total}문제)")
+    print("-" * WIDTH)
+    correct = 0
+    for number, quiz in enumerate(quizzes, start=1):
+        quiz.show(number)
+        picked = read_int("정답 입력: ", 1, CHOICE_COUNT)
+        if quiz.is_correct(picked):
+            correct += 1
+            print("✅ 정답입니다!")
+        else:
+            print(f"❌ 오답입니다. 정답은 {quiz.answer}번 ({quiz.choices[quiz.answer - 1]})입니다.")
+        print("-" * WIDTH)
+    score = round(correct / total * 100)
+    print("=" * WIDTH)
+    print(f"🏆 결과: {total}문제 중 {correct}문제 정답! ({score}점)")
+    print("=" * WIDTH)
+    return correct, total
+
+
 def run_menu():
+    quizzes = default_quizzes()
     while True:
         show_menu()
         choice = read_int("선택: ", 1, len(MENU_ITEMS))
         if choice == len(MENU_ITEMS):
             print("👋 게임을 종료합니다.")
             return
-        print(f"[{MENU_ITEMS[choice - 1]}] 기능은 아직 준비 중입니다.")
+        if choice == 1:
+            play_quiz(quizzes)
+        else:
+            print(f"[{MENU_ITEMS[choice - 1]}] 기능은 아직 준비 중입니다.")
 
 
 def main():
