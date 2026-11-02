@@ -31,6 +31,19 @@ class Quiz:
         """사용자가 고른 번호가 정답이면 True."""
         return picked == self.answer
 
+    def to_dict(self):
+        return {"question": self.question, "choices": list(self.choices), "answer": self.answer}
+
+    @classmethod
+    def from_dict(cls, data):
+        """저장된 dict에서 Quiz를 만든다. 형식이 틀리면 ValueError."""
+        if not isinstance(data, dict):
+            raise ValueError("퀴즈 항목이 객체 형태가 아닙니다.")
+        try:
+            return cls(data["question"], data["choices"], data["answer"])
+        except KeyError as error:
+            raise ValueError(f"퀴즈에 {error} 항목이 없습니다.") from error
+
 
 def default_quizzes():
     """첫 실행(또는 데이터 복구) 때 쓰는 기본 퀴즈. 주제: 이번 달 과제 - Git · Python · Docker."""

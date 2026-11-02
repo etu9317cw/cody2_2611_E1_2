@@ -1,10 +1,13 @@
 """나만의 퀴즈 게임 - 진입점 (메뉴)"""
+import json
 import sys
+from pathlib import Path
 
-from inputs import read_int
-from quiz import CHOICE_COUNT, default_quizzes
+from inputs import read_int, read_text
+from quiz import CHOICE_COUNT, Quiz, default_quizzes
 
 WIDTH = 40
+STATE_PATH = Path(__file__).with_name("state.json")
 MENU_ITEMS = ["퀴즈 풀기", "퀴즈 추가", "퀴즈 목록", "점수 확인", "종료"]
 
 
@@ -15,6 +18,26 @@ def setup_console():
             stream.reconfigure(encoding="utf-8")
         except (AttributeError, ValueError):
             pass
+
+
+def save_state(state):
+    """퀴즈 목록을 프로젝트 루트의 state.json에 UTF-8로 저장한다."""
+    data = {"quizzes": [quiz.to_dict() for quiz in state["quizzes"]]}
+    try:
+        STATE_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    except OSError as error:
+        print(f"⚠️ 저장하지 못했습니다: {error}")
+
+
+def add_quiz(state):
+    """문제·선택지 4개·정답 번호를 입력받아 퀴즈를 추가하고 저장한다."""
+    print("📌 새로운 퀴즈를 추가합니다.")
+    question = read_text("문제를 입력하세요: ", "문제")
+    choices = [read_text(f"선택지 {i}: ", "선택지") for i in range(1, CHOICE_COUNT + 1)]
+    answer = read_int(f"정답 번호 (1-{CHOICE_COUNT}): ", 1, CHOICE_COUNT)
+    state["quizzes"].append(Quiz(question, choices, answer))
+    save_state(state)
+    print("✅ 퀴즈가 추가되었습니다!")
 
 
 def show_menu():
@@ -52,7 +75,7 @@ def play_quiz(quizzes):
 
 
 def run_menu():
-    quizzes = default_quizzes()
+    state = {"quizzes": default_quizzes()}
     while True:
         show_menu()
         choice = read_int("선택: ", 1, len(MENU_ITEMS))
@@ -60,7 +83,9 @@ def run_menu():
             print("👋 게임을 종료합니다.")
             return
         if choice == 1:
-            play_quiz(quizzes)
+            play_quiz(state["quizzes"])
+        elif choice == 2:
+            add_quiz(state)
         else:
             print(f"[{MENU_ITEMS[choice - 1]}] 기능은 아직 준비 중입니다.")
 
