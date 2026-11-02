@@ -106,7 +106,8 @@ class QuizGame:
         if not self.quizzes:
             print("⚠️ 등록된 퀴즈가 없습니다. 먼저 퀴즈를 추가하세요.")
             return
-        order = random.sample(self.quizzes, len(self.quizzes))  # 보너스: 랜덤 출제
+        count = read_int(f"몇 문제를 풀까요? (1-{len(self.quizzes)}): ", 1, len(self.quizzes))
+        order = random.sample(self.quizzes, count)  # 보너스: 랜덤 출제 + 문제 수 선택
         total = len(order)
         print(f"📝 퀴즈를 시작합니다! (총 {total}문제)")
         print("-" * WIDTH)
