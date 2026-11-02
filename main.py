@@ -22,7 +22,12 @@ def setup_console():
 
 def save_state(state):
     """퀴즈 목록을 프로젝트 루트의 state.json에 UTF-8로 저장한다."""
-    data = {"quizzes": [quiz.to_dict() for quiz in state["quizzes"]]}
+    data = {
+        "quizzes": [quiz.to_dict() for quiz in state["quizzes"]],
+        "best_score": state["best_score"],
+        "best_correct": state["best_correct"],
+        "best_total": state["best_total"],
+    }
     try:
         STATE_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     except OSError as error:
@@ -50,6 +55,26 @@ def list_quizzes(quizzes):
     for number, quiz in enumerate(quizzes, start=1):
         print(f"[{number}] {quiz.question}")
     print("-" * WIDTH)
+
+
+def update_best_score(state, correct, total):
+    """이번 점수가 최고 점수보다 높으면 갱신하고 저장한다. 갱신했으면 True."""
+    score = round(correct / total * 100)
+    best = state["best_score"]
+    if best is not None and score <= best:
+        return False
+    state["best_score"], state["best_correct"], state["best_total"] = score, correct, total
+    save_state(state)
+    return True
+
+
+def show_score(state):
+    """최고 점수를 보여 준다. 아직 풀지 않았으면 안내한다."""
+    if state["best_score"] is None:
+        print("ℹ️ 아직 퀴즈를 푼 기록이 없습니다. 먼저 퀴즈를 풀어 보세요.")
+        return
+    print(f"🏆 최고 점수: {state['best_score']}점 "
+          f"({state['best_total']}문제 중 {state['best_correct']}문제 정답)")
 
 
 def show_menu():
@@ -87,7 +112,8 @@ def play_quiz(quizzes):
 
 
 def run_menu():
-    state = {"quizzes": default_quizzes()}
+    state = {"quizzes": default_quizzes(),
+             "best_score": None, "best_correct": None, "best_total": None}
     while True:
         show_menu()
         choice = read_int("선택: ", 1, len(MENU_ITEMS))
@@ -95,11 +121,15 @@ def run_menu():
             print("👋 게임을 종료합니다.")
             return
         if choice == 1:
-            play_quiz(state["quizzes"])
+            result = play_quiz(state["quizzes"])
+            if result and update_best_score(state, *result):
+                print("🎉 새로운 최고 점수입니다!")
         elif choice == 2:
             add_quiz(state)
         elif choice == 3:
             list_quizzes(state["quizzes"])
+        elif choice == 4:
+            show_score(state)
         else:
             print(f"[{MENU_ITEMS[choice - 1]}] 기능은 아직 준비 중입니다.")
 
