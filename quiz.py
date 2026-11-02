@@ -30,3 +30,26 @@ class Quiz:
     def is_correct(self, picked):
         """사용자가 고른 번호가 정답이면 True."""
         return picked == self.answer
+
+
+def default_quizzes():
+    """첫 실행(또는 데이터 복구) 때 쓰는 기본 퀴즈. 주제: 이번 달 과제 - Git · Python · Docker."""
+    return [
+        Quiz("Git에서 지금까지 바꾼 내용을 저장소 기록으로 남기는 명령은?",
+             ["git add", "git commit", "git push", "git clone"], 2),
+        Quiz("인터넷의 저장소를 내 컴퓨터에 통째로 복사해 오는 명령은?",
+             ["git init", "git pull", "git clone", "git branch"], 3),
+        Quiz("다른 브랜치에서 한 작업을 지금 브랜치로 합치는 명령은?",
+             ["git merge", "git status", "git log", "git diff"], 1),
+        Quiz("터미널에서 지금 있는 폴더의 경로를 보여 주는 명령은?",
+             ["ls", "cd", "mkdir", "pwd"], 4),
+        Quiz("Python에서 이름표(키)로 값을 찾는 자료형은?",
+             ["list", "dict", "bool", "int"], 2),
+        Quiz("Docker 이미지를 실행하면 만들어지는 '실행 중인 상자'는?",
+             ["이미지", "레지스트리", "컨테이너", "볼륨"], 3),
+        Quiz("docker run -p 8080:80 에서 8080은 무엇인가?",
+             ["내 컴퓨터(호스트)의 포트 번호", "컨테이너 안 프로그램의 포트 번호",
+              "이미지 버전", "컨테이너 개수"], 1),
+        Quiz("Python 클래스의 __init__ 메서드는 언제 실행되는가?",
+             ["클래스를 지울 때", "객체가 만들어질 때", "파일을 닫을 때", "프로그램이 끝날 때"], 2),
+    ]
