@@ -26,7 +26,7 @@ class QuizGame:
     def save(self):
         """퀴즈 목록과 최고 점수를 state.json에 UTF-8로 저장한다.
 
-        임시 파일에 먼저 쓰고 바꿔치기해서, 쓰다가 끊겨도 기존 파일이 깨지지 않게 한다.
+        임시 파일에 먼저 쓰고 교체해서, 쓰다가 끊겨도 기존 파일이 깨지지 않게 한다.
         """
         data = {
             "quizzes": [quiz.to_dict() for quiz in self.quizzes],
