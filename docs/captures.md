@@ -211,3 +211,30 @@ Python에서 이름표(키)로 값을 찾는 자료형은?
 선택: 5
 👋 게임을 종료합니다.
 ```
+
+
+## 커밋 기록 (`git log --oneline --graph`)
+
+`feat/play` 브랜치에서 퀴즈 풀기를 만들고 `--no-ff`로 main에 병합한 자리가 갈라졌다 합쳐진 선으로 보인다.
+
+```text
+* 1ab722e Docs: 실행 화면 캡처 기록 추가 (메뉴·추가·풀기·점수)
+* 1fe3ff4 Docs: README 작성 (개요·주제·실행 방법·기능·파일 구조·state.json 설명)
+* 7834743 Fix: 시험 실행으로 바뀐 state.json을 초기 상태로 되돌림
+* 4ac9a82 Feat: 풀 문제 수 선택 (보너스 2)
+* ae22407 Feat: 퀴즈 풀기 랜덤 출제 (보너스 1)
+* c9a0876 Feat: state.json 저장/불러오기 완성 (UTF-8, 파일 없음·손상 복구, 안전한 저장)
+* 097882f Refactor: QuizGame 클래스로 게임 로직 분리 (main.py는 진입점만)
+* 1c8e28a Feat: 점수 확인과 최고 점수 갱신·저장 구현
+* 5d31bbb Feat: 퀴즈 목록 기능 구현 (퀴즈 없음 처리 포함)
+* 3b1bbc8 Feat: 퀴즈 추가 기능 구현 (입력 검증, 추가분 state.json 저장)
+*   295ae92 Merge: feat/play 브랜치의 퀴즈 풀기 기능을 main에 병합
+|\  
+| * 37cf179 Feat: 퀴즈 풀기 구현 (출제·정오 판정·결과, 퀴즈 없음 처리)
+|/  
+* ef2f5ce Feat: 기본 퀴즈 8개 작성 (Git·Python·Docker)
+* 482c9af Feat: Quiz 클래스 작성 (문제·선택지 4개·정답 번호, 출력·정답 확인)
+* 4ad7b9c Feat: 공통 입력·예외 처리 추가 (공백·변환 실패·범위·빈 입력·Ctrl+C/EOF)
+* 4073ba1 Feat: 메뉴 출력과 종료 기능 구현
+* a2b58c5 Chore: 저장소 초기 설정 (.gitignore, README 초안)
+```
