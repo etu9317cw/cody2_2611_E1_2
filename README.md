@@ -88,3 +88,5 @@ python main.py
   "best_total": 5
 }
 ```
+
+복제 실습: 다른 폴더에서 clone한 뒤 이 줄을 추가해 push했습니다.
