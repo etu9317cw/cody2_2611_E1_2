@@ -44,6 +44,7 @@ Windows Terminal에서 `python main.py`를 실제로 실행한 화면입니다. 
 
 | 화면 | 파일 |
 |---|---|
+| 개발 환경 (VS Code + 터미널: Python 3.12.10 · Git 2.55 · `user.name` · 기본 브랜치 `main` · `origin`) | [`docs/screenshots/dev_env.png`](docs/screenshots/dev_env.png) |
 | 시작·메뉴 (`state.json` 불러오기) | [`docs/screenshots/menu.png`](docs/screenshots/menu.png) |
 | 3. 퀴즈 목록 | [`docs/screenshots/list.png`](docs/screenshots/list.png) |
 | 2. 퀴즈 추가 (문제·선택지 4개·정답 번호 입력 → 저장) | [`docs/screenshots/add_quiz.png`](docs/screenshots/add_quiz.png) |
@@ -65,7 +66,7 @@ Windows Terminal에서 `python main.py`를 실제로 실행한 화면입니다. 
 ├── state.json     # 저장 데이터 (퀴즈 목록 + 최고 점수), UTF-8
 ├── docs/
 │   ├── captures.md   # 실행 화면 기록 (텍스트)
-│   └── screenshots/  # 실행 화면·git log 스크린샷 (png 6장)
+│   └── screenshots/  # 개발 환경·실행 화면·git log 스크린샷 (png 7장)
 ├── .gitignore
 └── README.md
 ```
