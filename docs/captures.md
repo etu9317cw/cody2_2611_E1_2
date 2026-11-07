@@ -2,7 +2,7 @@
 
 `python main.py`를 실제로 돌린 출력이다. 입력한 값이 프롬프트 뒤에 보이도록 기록했다. 시험은 저장소가 아닌 **임시 폴더 복사본**에서 해서 `state.json`이 바뀌지 않는다.
 
-이미지 스크린샷(Windows Terminal 실제 창)은 [`screenshots/`](screenshots/)에 있다: `dev_env.png`(개발 환경) · `menu.png` · `list.png` · `add_quiz.png` · `play.png` · `score.png` · `git_log.png`.
+이미지 스크린샷(Windows Terminal 실제 창)은 [`screenshots/`](screenshots/)에 있다: `dev_env.png`(개발 환경) · `menu.png` · `list.png` · `add_quiz.png` · `add_quiz_list.png`(추가 뒤 총 9개) · `play.png` · `score.png` · `git_log.png`.
 
 
 ## 메뉴와 퀴즈 목록 (저장 파일이 없어 기본 퀴즈 8개로 시작)

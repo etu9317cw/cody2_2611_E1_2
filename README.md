@@ -48,6 +48,7 @@ Windows Terminal에서 `python main.py`를 실제로 실행한 화면입니다. 
 | 시작·메뉴 (`state.json` 불러오기) | [`docs/screenshots/menu.png`](docs/screenshots/menu.png) |
 | 3. 퀴즈 목록 | [`docs/screenshots/list.png`](docs/screenshots/list.png) |
 | 2. 퀴즈 추가 (문제·선택지 4개·정답 번호 입력 → 저장) | [`docs/screenshots/add_quiz.png`](docs/screenshots/add_quiz.png) |
+| 추가 뒤 목록 (총 8개 → **9개**, `[9]`에 새 문제) | [`docs/screenshots/add_quiz_list.png`](docs/screenshots/add_quiz_list.png) |
 | 1. 퀴즈 풀기 (3문제 랜덤 출제 → 정답/오답 → 점수·최고 점수 갱신) | [`docs/screenshots/play.png`](docs/screenshots/play.png) |
 | 4. 점수 확인 | [`docs/screenshots/score.png`](docs/screenshots/score.png) |
 | `git log --oneline --graph --all` (feat/play 브랜치 병합 흔적) | [`docs/screenshots/git_log.png`](docs/screenshots/git_log.png) |
@@ -66,7 +67,7 @@ Windows Terminal에서 `python main.py`를 실제로 실행한 화면입니다. 
 ├── state.json     # 저장 데이터 (퀴즈 목록 + 최고 점수), UTF-8
 ├── docs/
 │   ├── captures.md   # 실행 화면 기록 (텍스트)
-│   └── screenshots/  # 개발 환경·실행 화면·git log 스크린샷 (png 7장)
+│   └── screenshots/  # 개발 환경·실행 화면·git log 스크린샷 (png 8장)
 ├── .gitignore
 └── README.md
 ```
